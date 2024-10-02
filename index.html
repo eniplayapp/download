@@ -1,52 +1,404 @@
-<!doctype html>
-<html lang="en-US">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>eniplay - Live Streaming App</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!--META-->
-	<meta property="og:locale" content="en_US">
-	<meta property="og:title" content="eniplay - Live Streaming App">
-	<meta property="og:description" content="Experience live streaming like never before with eniplay">
-	<meta property="og:site_name" content="eniplay">
-	<meta property="og:image" content="https://example.com/images/eniplay-banner.png">
-	<meta property="og:image:secure_url" content="https://example.com/images/eniplay-banner.png">
-	<meta property="og:url" content="https://example.com">
-	<!--Additional-->
-    <meta name="author" content="Your Name">
-    <meta name="robots" content="index, follow">
-    <meta name="rating" content="safe for kids">
-	<!--Links-->
-	<link rel="icon" href="images/favicon.png">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link rel="stylesheet" href="dark-style.css" type="text/css" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EniPlay - Stream Any Video, Anytime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c111b;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(12, 17, 27, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1f80e0;
+        }
+
+        .download-btn {
+            background-color: #1f80e0;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #0c5bb0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://ik.imagekit.io/eniplay/app-interface.jpg') center/cover no-repeat;
+            position: relative;
+            padding: 6rem 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .hero img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-top: 2rem;
+        }
+
+        .hero .download-btn {
+            font-size: 1.2rem;
+            padding: 12px 40px;
+            margin-top: 2rem;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #192133;
+            padding: 4rem 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background-color: #10151f;
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #1f80e0;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            color: #b0b0b0;
+        }
+
+        /* Preview Section */
+        .preview {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .preview h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview p {
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 1rem;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: #192133;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0c111b;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #1f80e0;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                justify-content: center;
+                gap: 3rem;
+                text-align: left;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero p {
+                font-size: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+                padding: 0 20px;
+            }
+
+            .hero .download-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-	<section id="hero">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-					<img src="https://cdn.discordapp.com/attachments/1010506295239004212/1217896941346754622/Group_47.png?ex=6605b1ea&is=65f33cea&hm=b3b65892dc6e884f070ee26672c1b5e1ce1d5104fa3354f5165e7cde9f611c77&" class="img-fluid" alt="Demo image">
-				</div>
-				<div class="col-md-7 content-box hero-content">
-					<span>eniplay</span>
-					<h1>Version 1.0<br><b>Live Streaming App</b></h1>
-					<p>Experience live streaming like never before with eniplay</p>
-					<a href="https://eniplay.com/download/main/eniplay.apk" class="btn btn-regular" target="_self">Download eniplay</a>
-					<a href="https://eniplay.com/download/beta/eniplay.apk" class="btn btn-regular" target="_self">Download eniplay (Beta)</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="container">
-		<div class="row">
-			<p style="font-size: 12px; text-align: center; margin-top: 30px; width: 100%">Copyright &copy; 2022 <a href="https://eniplay.com" target="_self">eniplay</a>. All rights reserved.</p>
-		</div>
-	</div>
-</body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="https://i.ibb.co/QcdYZ67/Group-41.png" alt="EniPlay Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#preview">Preview</a>
+                <a href="#cta">Get the App</a>
+            </div>
+            <button class="download-btn">Download Now</button>
+        </nav>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div>
+                <h1>Stream Any Video, Anytime</h1>
+                <p>With EniPlay, you can stream videos in any format like MP4, M3U8, HLS directly on your Android device. Enjoy seamless video playback with no limitations.</p>
+                <button class="download-btn">Download for Android</button>
+            </div>
+            <img src="https://ik.imagekit.io/eniplay/app-preview.png" alt="EniPlay App Preview" />
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose EniPlay?</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-play-circle"></i></div>
+                    <h3>Stream Any Format</h3>
+                    <p>Supports MP4, M3U8, HLS, and many more video formats.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-link"></i></div>
+                    <h3>Paste and Play</h3>
+                    <p>Copy any video link and start watching instantly.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-cloud-download-alt"></i></div>
+                    <h3>Offline Viewing</h3>
+                    <p>Download your favorite videos and watch them offline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section id="preview" class="preview">
+        <div class="container">
+            <h2>See EniPlay in Action</h2>
+            <p>Experience the simple and intuitive interface of EniPlay.</p>
+            <div class="video-container">
+                <img src="https://ik.imagekit.io/eniplay/app-interface.jpg" alt="EniPlay Interface" class="video-placeholder">
+                <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="cta" class="cta">
+        <div class="container">
+            <h2>Get EniPlay Now</h2>
+            <p>Download EniPlay and start streaming your favorite content today.</p>
+            <button class="download-btn">Download for Android</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>&copy; 2024 EniPlay. All rights reserved.</p>
+    </footer>
+
+    <!-- Video Preview Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoContainer = document.querySelector('.video-container');
+            videoContainer.addEventListener('click', function() {
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('height', '100%');
+                iframe.setAttribute('src', 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1');
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allowfullscreen', '');
+
+                videoContainer.innerHTML = '';
+                videoContainer.appendChild(iframe);
+            });
+        });
+    </script>
+</body>
 </html>
