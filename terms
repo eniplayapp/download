@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #181822;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #4CAF50; /* Primary accent color */
+        }
+        p {
+            font-size: 16px;
+            color: #cccccc;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .terms-section {
+            margin-bottom: 20px;
+        }
+        .terms-section h2 {
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        .terms-section p {
+            margin: 10px 0;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666666;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            h1, h2, h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Terms and Conditions</h1>
+    <p>Welcome to EniPlay. By using our application, you agree to comply with and be bound by the following terms and conditions. Please review them carefully.</p>
+
+    <div class="terms-section">
+        <h2>Acceptance of Terms</h2>
+        <p>By accessing or using EniPlay, you agree to be bound by these terms. If you do not agree, please do not use our app.</p>
+    </div>
+
+    <div class="terms-section">
+        <h2>Use of the App</h2>
+        <p>You agree to use EniPlay only for lawful purposes. You must not use the app in any way that breaches any applicable local, national, or international law or regulation.</p>
+    </div>
+
+    <div class="terms-section">
+        <h2>Intellectual Property</h2>
+        <p>All content provided on EniPlay, including but not limited to text, graphics, logos, and software, is the property of EniPlay or its content suppliers and is protected by intellectual property laws.</p>
+    </div>
+
+    <div class="terms-section">
+        <h2>Liability</h2>
+        <p>EniPlay is provided on an "as-is" basis. We make no warranties or guarantees regarding the reliability or accuracy of the content streamed through the app.</p>
+    </div>
+
+    <div class="terms-section">
+        <h2>Changes to the Terms</h2>
+        <p>We reserve the right to modify these terms at any time. Any changes will be posted on this page, and your continued use of the app following such changes signifies your acceptance of the new terms.</p>
+    </div>
+
+    <div class="terms-section">
+        <h2>Governing Law</h2>
+        <p>These terms are governed by and construed in accordance with the laws of your jurisdiction.</p>
+    </div>
+
+    <div class="terms-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us at <a href="mailto:support@eniplay.com">support@eniplay.com</a>.</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 EniPlay. All rights reserved.</p>
+</div>
+
+</body>
+</html>
